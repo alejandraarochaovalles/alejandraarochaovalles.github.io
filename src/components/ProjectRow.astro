@@ -1,0 +1,132 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="proj reveal">
+  <hr class="threshold" />
+  <header class="proj__head">
+    <span class="mono proj__id">{project.id} / {project.kind}</span>
+    <h3 class="proj__name">{project.name}</h3>
+  </header>
+
+  <p class="proj__problem">{project.problem}</p>
+  <p class="proj__arch">{project.architecture}</p>
+
+  {project.metrics.length > 0 && (
+    <dl class="proj__metrics">
+      {project.metrics.map(([value, label]) => (
+        <div class="proj__metric">
+          <dt class="proj__value">{value}</dt>
+          <dd class="mono proj__label">{label}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+
+  <ul class="proj__stack">
+    {project.stack.map((s) => <li class="mono proj__tag">{s}</li>)}
+  </ul>
+
+  {project.links.length > 0 && (
+    <p class="proj__links">
+      {project.links.map((l) => (
+        <a class="proj__link" href={l.href} rel="noopener">{l.label} →</a>
+      ))}
+    </p>
+  )}
+</article>
+
+<style>
+  .proj {
+    padding-bottom: 3.2rem;
+  }
+
+  .proj__head {
+    padding-top: 1.1rem;
+  }
+
+  .proj__id {
+    display: block;
+  }
+
+  .proj__name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3.4vw, 1.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0.45rem 0 0;
+    text-wrap: balance;
+  }
+
+  .proj__problem {
+    max-width: var(--measure);
+    margin: 1rem 0 0;
+    font-size: 1.02rem;
+  }
+
+  .proj__arch {
+    max-width: var(--measure);
+    margin: 0.8rem 0 0;
+    color: var(--slate);
+    font-size: 0.94rem;
+  }
+
+  .proj__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin: 1.5rem 0 0;
+  }
+
+  .proj__metric { min-width: 0; }
+
+  .proj__value {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--flag);
+  }
+
+  .proj__label {
+    margin: 0.3rem 0 0;
+    font-size: 0.64rem;
+  }
+
+  .proj__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+
+  .proj__tag {
+    font-size: 0.66rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--paper-2);
+    color: var(--slate);
+  }
+
+  .proj__links {
+    margin: 1.35rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+
+  .proj__link {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-decoration: none;
+    color: var(--signal);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .proj__link:hover {
+    border-color: var(--signal);
+  }
+</style>

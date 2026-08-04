@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import { site, person } from '../data/profile';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.legalName,
+  alternateName: person.name,
+  jobTitle: person.role,
+  url: site.url,
+  email: `mailto:${person.email}`,
+  address: { '@type': 'PostalAddress', addressLocality: 'Barcelona', addressCountry: 'ES' },
+  sameAs: person.links.filter((l) => l.href.startsWith('http')).map((l) => l.href),
+  knowsAbout: [
+    'Agile coaching',
+    'Multi-agent AI systems',
+    'Delivery metrics',
+    'DORA metrics',
+    'Scrum',
+    'Python',
+    'Azure DevOps',
+  ],
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad Simón Bolívar' },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.title}</title>
+    <meta name="description" content={site.description} />
+    <link rel="canonical" href={site.url} />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content={`${site.url}/og.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const items = document.querySelectorAll('.reveal');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px' }
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-in'));
+      }
+    </script>
+  </body>
+</html>

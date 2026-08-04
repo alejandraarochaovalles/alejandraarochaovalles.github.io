@@ -1,0 +1,93 @@
+---
+import { person } from '../data/profile';
+---
+
+<aside class="rail">
+  <div class="rail__inner">
+    <h1 class="rail__name">{person.name}</h1>
+    <p class="rail__role">{person.role}</p>
+    <p class="mono rail__sub">{person.roleSub}</p>
+    <p class="mono rail__loc">{person.location}</p>
+
+    <nav class="rail__links" aria-label="Profiles and contact">
+      {person.links.map((l) => (
+        <a class="rail__link" href={l.href}>{l.label}</a>
+      ))}
+      <a class="rail__link" href={`mailto:${person.email}`}>Email</a>
+    </nav>
+  </div>
+</aside>
+
+<style>
+  .rail {
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+  }
+
+  .rail__name {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 6.5vw, 2.9rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .rail__role {
+    font-weight: 500;
+    margin: 0.9rem 0 0;
+    color: var(--flag);
+  }
+
+  .rail__sub {
+    margin: 0.5rem 0 0;
+    font-size: 0.64rem;
+    line-height: 1.7;
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  .rail__loc {
+    margin: 0.5rem 0 0;
+    font-size: 0.64rem;
+  }
+
+  .rail__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--wire);
+  }
+
+  .rail__link {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding-bottom: 1px;
+    border-bottom: 1px solid var(--wire);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .rail__link:hover {
+    color: var(--signal);
+    border-color: var(--signal);
+  }
+
+  @media (min-width: 62rem) {
+    .rail__inner {
+      position: sticky;
+      top: clamp(2.5rem, 6vw, 4.5rem);
+    }
+    .rail__links {
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .rail__link {
+      align-self: flex-start;
+    }
+  }
+</style>

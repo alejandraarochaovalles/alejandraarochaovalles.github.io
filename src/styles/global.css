@@ -1,0 +1,108 @@
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --paper: #edf1f0;
+  --paper-2: #e2e9e7;
+  --ink: #0f1e22;
+  --slate: #56686b;
+  --wire: #c0ccca;
+  --signal: #c4386e;
+  --flag: #17635c;
+
+  --display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --body: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --rail: 19rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 34rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-feature-settings: 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* ── Utilities ──────────────────────────────────────────── */
+.mono {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The threshold rule — the page's recurring structural device. */
+.threshold {
+  position: relative;
+  border: 0;
+  border-top: 1px solid var(--wire);
+  margin: 0;
+}
+.threshold::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3.5rem;
+  border-top: 1px solid var(--signal);
+}
+
+/* ── Shell ──────────────────────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0 var(--gutter);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 62rem) {
+  .shell {
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+  }
+}
+
+/* ── Motion ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
