@@ -15,6 +15,10 @@ import { person } from '../data/profile';
       ))}
       <a class="rail__link" href={`mailto:${person.email}`}>Email</a>
     </nav>
+    <p class="print-only rail__print">
+      {person.email} · {person.phone}<br />
+      linkedin.com/in/alejandra-arocha · github.com/alejandraarochaovalles
+    </p>
   </div>
 </aside>
 
@@ -75,6 +79,11 @@ import { person } from '../data/profile';
   .rail__link:hover {
     color: var(--signal);
     border-color: var(--signal);
+  }
+  .rail__print {
+    margin: 1rem 0 0;
+    font-size: 9.5pt;
+    line-height: 1.5;
   }
 
   @media (min-width: 62rem) {

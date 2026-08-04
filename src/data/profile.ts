@@ -18,10 +18,11 @@ export const person = {
   roleSub: 'Delivery metrics · Flow · AI-enabled refinement',
   location: 'Barcelona · Remote (EU/UK) · B2B',
   email: 'alejandraarochaovalles@gmail.com',
+  phone: '+34 656 276 983',   // solo se imprime en el PDF, no se muestra en la web
   links: [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/alejandra-arocha' },
-    { label: 'GitHub', href: 'https://github.com/alejandraarochaovalles-svg' },
-    { label: 'Newsletter', href: 'https://www.linkedin.com/newsletters/TODO' }, // TODO
+    { label: 'GitHub', href: 'https://github.com/alejandraarochaovalles' },
+    { label: 'Newsletter', href: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=6984693523304357888' }, // TODO
     { label: 'CV (PDF)', href: '/alejandra-arocha-cv.pdf' },
   ],
 };
@@ -69,7 +70,7 @@ export const projects = [
     ],
     stack: ['Python', 'Groq · Llama 3.3 70B', 'Pydantic v2', 'asyncio', 'Jinja2', 'Flask', 'Chart.js', 'uv'],
     links: [
-      { label: 'Repository', href: 'https://github.com/alejandraarochaovalles-svg/Agente-Refinador-de-Historias-de-Usuario' },
+      { label: 'Repository', href: 'https://github.com/alejandraarochaovalles/Agente-Refinador-de-Historias-de-Usuario' },
     ],
   },
   {
@@ -98,7 +99,7 @@ export const projects = [
       'A live self-assessment that scores an organisation across capability dimensions and returns concrete next actions instead of a maturity label. Shipped and deployed, not a prototype.',
     metrics: [],
     stack: ['JavaScript', 'Netlify'],
-    links: [{ label: 'Live tool', href: 'https://TODO.netlify.app' }], // TODO
+    links: [{ label: 'Live tool', href: 'https://iaassessment.netlify.app/' }], // TODO
   },
 ];
 
@@ -164,7 +165,7 @@ export const credentials = {
 
 export const writing = {
   newsletter: 'Change, Tech & Human Systems',
-  newsletterHref: 'https://www.linkedin.com/newsletters/TODO', // TODO
+  newsletterHref: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=6984693523304357888', // TODO
   pieces: [
     {
       title: 'The Agile Productivity Paradox: Why AI-Powered Teams Aren\u2019t Always Delivering Faster',

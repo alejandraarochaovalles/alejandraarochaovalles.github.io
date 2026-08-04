@@ -106,3 +106,110 @@ a { color: inherit; }
   .reveal { opacity: 1; transform: none; transition: none; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
+/* ── Print: el sitio ES el PDF ───────────────────────────── */
+/* Los estilos scoped de Astro ganan por especificidad, de ahí los !important. */
+.print-only { display: none; }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm 14mm 12mm;
+  }
+
+  :root {
+    --paper: #fff;
+    --paper-2: #fff;
+    --ink: #000;
+    --slate: #2b2b2b;
+    --wire: #b0b0b0;
+    --signal: #000;
+    --flag: #000;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000;
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  .print-only { display: block !important; }
+
+  .shell { display: block !important; max-width: none !important; padding: 0 !important; }
+  .main { padding: 0 !important; }
+
+  /* Cabecera a una columna */
+  .rail { padding: 0 !important; }
+  .rail__inner { position: static !important; }
+  .rail__name { font-size: 20pt !important; }
+  .rail__role { font-size: 10.5pt !important; margin-top: 0.2rem !important; }
+  .rail__sub, .rail__loc { font-size: 7.5pt !important; margin-top: 0.15rem !important; }
+  .rail__links { display: none !important; }
+  .rail__print { margin-top: 0.5rem !important; font-size: 8.5pt !important; }
+
+  /* Sin animaciones ni contenido invisible */
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .pipe__node { animation: none !important; }
+
+  /* Lo que no aporta en papel */
+  .hero__pipe, .foot__meta { display: none !important; }
+
+  .hero__line { font-size: 12pt !important; max-width: none !important; margin-top: 0.5rem !important; }
+  .hero__body { font-size: 9pt !important; max-width: none !important; margin-top: 0.35rem !important; }
+
+  .block { margin-top: 0.5rem !important; }
+  .block__title { font-size: 7pt !important; margin-bottom: 0.3rem !important; }
+
+  .exp-list, .creds, .role__points, .hero__body, .proj__problem,
+  .proj__arch, .write__intro, .foot__cta { max-width: none !important; }
+
+  .exp-list {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.1rem 1.5rem !important;
+    font-size: 8.5pt !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .proj { padding-bottom: 0.45rem !important; }
+  .proj__head { padding-top: 0.5rem !important; }
+  .proj__name { font-size: 11pt !important; margin-top: 0.15rem !important; }
+  .proj__problem, .proj__arch { font-size: 8.5pt !important; margin-top: 0.25rem !important; }
+  .proj__metrics { margin-top: 0.4rem !important; gap: 1.1rem !important; }
+  .proj__value { font-size: 11pt !important; }
+  .proj__stack { margin-top: 0.4rem !important; }
+  .proj__tag, .creds__tag { border: 1px solid var(--wire); font-size: 6.5pt !important; }
+  .proj__links { margin-top: 0.4rem !important; }
+
+  .role {
+    padding: 0.4rem 0 !important;
+    grid-template-columns: 9.5rem minmax(0, 1fr) !important;
+    gap: 0 1.2rem !important;
+  }
+  .role__org { font-size: 10.5pt !important; }
+  .role__points { font-size: 8.5pt !important; }
+  .role__points li { margin-bottom: 0.08rem !important; }
+
+  .earlier { padding-top: 0.6rem !important; }
+  .earlier__item { padding: 0.25rem 0 !important; }
+
+  .creds { grid-template-columns: 1fr 1fr !important; padding-top: 0.5rem !important; gap: 0.7rem 1.5rem !important; }
+  .creds__list { font-size: 8.5pt !important; }
+  .creds__list li { padding: 0.15rem 0 !important; }
+
+  .write { padding-top: 0.6rem !important; }
+  .write__intro { font-size: 8.5pt !important; }
+  .write__list li { padding: 0.18rem 0 !important; }
+  .write__piece { font-size: 8.5pt !important; }
+
+  .foot { margin-top: 0.4rem !important; break-inside: avoid; }
+  .foot__cta { font-size: 9.5pt !important; margin-top: 0.3rem !important; }
+  .foot__mail { font-size: 8.5pt !important; margin-top: 0.3rem !important; }
+
+  /* Cortes de página limpios, solo donde importa */
+  .proj, .role { break-inside: avoid; }
+  .block__title, h1, h2, h3 { break-after: avoid; }
+
+  /* Enlaces legibles en papel */
+  a { text-decoration: none; color: #000; }
+  .proj__link::after { content: " (" attr(href) ")"; font-size: 6.5pt; word-break: break-all; }
+}
