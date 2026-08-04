@@ -170,8 +170,8 @@ export const writing = {
   pieces: [
     {
       title: 'The Agile Productivity Paradox: Why AI-Powered Teams Aren\u2019t Always Delivering Faster',
-      href: '#', // TODO
+      href: 'https://www.linkedin.com/pulse/agile-productivity-paradox-why-ai-powered-teams-arent-arocha-td7xe', // TODO
     },
-    { title: 'Refinement is decision work', href: '#' }, // TODO
+    { title: 'What nobody tells you about adopting AI in real teams', href: 'https://www.linkedin.com/pulse/what-nobody-tells-you-adopting-ai-real-teams-alejandra-arocha-kzaue' }, // TODO
   ],
 };
