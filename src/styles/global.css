@@ -145,6 +145,8 @@ a { color: inherit; }
   .rail__role { font-size: 10.5pt !important; margin-top: 0.2rem !important; }
   .rail__sub, .rail__loc { font-size: 7.5pt !important; margin-top: 0.15rem !important; }
   .rail__links { display: none !important; }
+/* Foto en el PDF: cambia a none para la versión sin foto (UK/NL) */
+  .rail__photo { display: none !important; width: 72px !important; height: 72px !important; margin-bottom: 0.5rem !important; }
   .rail__print { margin-top: 0.5rem !important; font-size: 8.5pt !important; }
 
   /* Sin animaciones ni contenido invisible */

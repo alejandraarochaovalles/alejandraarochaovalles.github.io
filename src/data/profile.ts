@@ -13,6 +13,7 @@ export const site = {
 
 export const person = {
   name: 'Alejandra Arocha',
+  photo: '/foto.jpg',         // pon '' (vacío) para quitarla
   legalName: 'María Alejandra Arocha Ovalles',
   role: 'Agile Coach & Scrum Master',
   roleSub: 'Delivery metrics · Flow · AI-enabled refinement',

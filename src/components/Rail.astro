@@ -4,6 +4,9 @@ import { person } from '../data/profile';
 
 <aside class="rail">
   <div class="rail__inner">
+   {person.photo && (
+      <img class="rail__photo" src={person.photo} width="96" height="96" alt={person.name} />
+    )}
     <h1 class="rail__name">{person.name}</h1>
     <p class="rail__role">{person.role}</p>
     <p class="mono rail__sub">{person.roleSub}</p>
@@ -26,6 +29,18 @@ import { person } from '../data/profile';
   .rail {
     padding: clamp(2.5rem, 6vw, 4.5rem) 0 0;
   }
+.rail__photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1.1rem;
+    filter: grayscale(1) contrast(1.04);
+    transition: filter 0.4s ease;
+  }
+
+  .rail__photo:hover { filter: none; }
 
   .rail__name {
     font-family: var(--display);
