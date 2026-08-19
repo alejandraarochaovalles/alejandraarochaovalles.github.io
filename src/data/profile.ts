@@ -29,9 +29,9 @@ export const person = {
 };
 
 export const thesis = {
-  headline: 'I coach delivery teams. I also build the systems that measure them.',
+  headline: 'I help teams understand how work is really flowing and improve it.',
   body:
-    'Electronic engineer by training, Agile Coach by trade. I design delivery metrics systems for large product organisations — most recently across 50+ teams in a 10,000-person insurance group — and I build the tooling that makes them usable: flow dashboards, multi-agent refinement pipelines, assessment tools teams actually open on a Monday.',
+    'I am an Agile Coach with an engineering background and a strong interest in the technical side of delivery. I work with teams and organisations to improve flow, understand delivery data and make better decisions. I also build tools that support that work, from delivery dashboards to AI-assisted workflows.',
 };
 
 // Elemento firma del hero: el sistema real de refinamiento.
