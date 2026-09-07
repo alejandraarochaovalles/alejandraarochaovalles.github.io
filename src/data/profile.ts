@@ -102,6 +102,24 @@ export const projects = [
     stack: ['JavaScript', 'Netlify'],
     links: [{ label: 'Live tool', href: 'https://iaassessment.netlify.app/' }], // TODO
   },
+  {
+    id: '04',
+    kind: 'Retrospective platform',
+    name: 'Retro Dynamics Agent',
+    problem:
+      'Teams default to the same Start/Stop/Continue retro every sprint. Engagement drops, and findings rarely make it past the whiteboard into a ticket.',
+    architecture:
+      'An AI proposes a facilitation dynamic based on sprint context instead of a fixed format. Teams collaborate live on a canvas board — sticky notes, free positioning, voting — synced in real time via Liveblocks, then consolidate findings straight into Jira or Azure DevOps tickets through per-user OAuth, with no shared credentials and no server-held session state.',
+    metrics: [
+      ['3', 'session phases'],
+      ['2', 'ticketing integrations'],
+    ],
+    stack: ['React', 'TypeScript', 'Python · FastAPI', 'PostgreSQL (Supabase)', 'Liveblocks', 'Groq · LLM', 'OAuth 2.0', 'Vercel'],
+    links: [
+      { label: 'Repository', href: 'https://github.com/alejandraarochaovalles/retro-dynamics-agent' },
+      { label: 'Live tool', href: 'https://retro-dynamics-agent-gcdg.vercel.app/' },
+    ],
+  },
 ];
 
 export const experience = [
